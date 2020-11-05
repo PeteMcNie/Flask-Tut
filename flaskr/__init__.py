@@ -1,3 +1,4 @@
+# Further notes on setup on Flask, Apllication Setup webpage
 import os
 
 from flask import Flask
