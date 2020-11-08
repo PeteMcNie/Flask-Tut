@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} - Flaskr</title>
     <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>  
+<body>
     <nav>
         <h1>Flaskr</h1>
         <ul>
-            {% if g.user %} <!-- g is automatically available in templates. Based on if g.user is set (from load_logged_in_user), either the username and a log out link are displayed, or links to register and log in are displayed. url_for() is also automatically available, and is used to generate URLs to views instead of writing them out manually. -->
+            {% if g.user %} 
             <li><span>{{ g.user['username'] }}</span></li>
             <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
             {% else %}
@@ -24,17 +22,9 @@
             {% block header %}{% endblock %}
         </header>
         {% for message in get_flashed_messages() %}
-            <div class='flash'>{{ message }}</div> <!-- After the page title, and before the content, the template loops over each message returned by get_flashed_messages(). You used flash() in the views to show error messages, and this is the code that will display them. -->
+            <div class='flash'>{{ message }}</div> 
         {% endfor %}
         {% block content %}{% endblock %}
     </section>
 </body>
 </html>
-
-<!-- There are three blocks defined here that will be overridden in the other templates:
-
-{% block title %} will change the title displayed in the browser’s tab and window title.
-
-{% block header %} is similar to title but will change the title displayed on the page.
-
-{% block content %} is where the content of each page goes, such as the login form or a blog post.-->
