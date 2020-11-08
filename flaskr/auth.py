@@ -42,7 +42,7 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
-    if request.mehtod == 'POST':
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         db = get_db()
